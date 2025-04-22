@@ -1,9 +1,9 @@
-# SPOTIFY
+# SPOTIFY SQL POSTGRE
 
 Objective: 
 This project involves analysing a Spotify dataset with various attributes about tracks, albums, and artists using SQL. It covers an end-to-end process of normalizing a denormalized dataset, performing SQL queries of varying complexity (easy, medium, and advanced), and optimizing query performance. The primary goals of the project are to practice advanced SQL skills and generate valuable insights from the dataset.
 
--- create table
+** create table
 CREATE TABLE spotify (
     artist VARCHAR(255),
     track VARCHAR(255),
@@ -149,6 +149,7 @@ SELECT Distinct ALBUM,ARTIST
 	 highest_energy-lowest_energy as energy_diff
 	 FROM cte
 	 ORDER BY 2 DESC;
+
 
 
 
