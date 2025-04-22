@@ -112,6 +112,44 @@ SELECT Distinct ALBUM,ARTIST
       AND 
 	  STREAMED_ON_YOUTUBE <> 0;
 
+** Q11.Find the top 3 most-viewed tracks for each artist using window functions.
+
+       WITH ranking_artist
+       AS (SELECT artist,track,
+            SUM(VIEWS) AS  "total_view",
+			DENSE_RANK() OVER(PARTITION BY artist ORDER BY SUM(VIEWS)DESC) AS RANK 
+       FROM spotify
+       GROUP BY 1,2
+       ORDER BY 1,3 DESC 
+       )
+       SELECT * FROM ranking_artist
+       WHERE Rank <= 3;
+
+** Q.12. Write a query to find tracks where the liveness score is above the average.
+
+         SELECT 
+             artist,
+	     track,
+	     liveness
+	     From spotify 
+         WHERE Liveness > (SELECT AVG (liveness) FROM SPOTIFY)
+
+** Q.13.Use a WITH clause to calculate the difference between the highest and lowest energy values for tracks in each album.
+
+         WITH CTE
+         AS 
+         (SELECT
+		album,
+		MAX(Energy) as highest_energy,
+		MIN(Energy) as lowest_energy
+         FROM SPOTIFY
+         GROUP BY 1)
+         SELECT 
+         album,
+	 highest_energy-lowest_energy as energy_diff
+	 FROM cte
+	 ORDER BY 2 DESC;
+
 
 
       
