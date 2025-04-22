@@ -62,6 +62,57 @@ SELECT Distinct ALBUM,ARTIST
       FROM SPOTIFY
       GROUP BY  Artist
       order by 2 ;
+      
+** Q6. Calculate the average danceability of tracks in each album.
+
+       SELECT album, avg(danceability) as avg_dancebility
+       FROM SPOTIFY
+       GROUP BY 1
+       ORDER BY 2 DESC;
+
+** Q.7. Find the top 5 tracks with the highest energy values.
+
+        SELECT TRACK, MAX(ENERGY) AS "Avg_energy"
+        FROM SPOTIFY
+        Group by 1
+        ORDER BY 2 DESC
+        LIMIT 5;
+
+**Q.8 List all tracks along with their views and likes where official_video = TRUE.
+
+      SELECT track,
+      SUM(Views) AS Total_Views,
+      SUM(likes) AS Total_likes
+      FROM SPOTIFY
+      WHERE OFFICIAL_VIDEO=TRUE
+      GROUP BY 1
+      ORDER BY 2 DESC;
+
+** Q.9 For each album, calculate the total views of all associated tracks.
+
+    SELECT ALBUM,track,
+    SUM(Views) AS Total_Views
+    FROM SPOTIFY
+    GROUP BY 1,2
+    ORDER BY 2 DESC;
+
+** Q.10 Retrieve the track names that have been streamed on Spotify more than YouTube.
+
+       SELECT * FROM 
+    (SELECT 
+     track,
+            --- most_played_on,
+            COALESCE(SUM(CASE WHEN MOST_PLAYED_ON ='Youtube' THEN stream END),0) AS STREAMED_ON_YOUTUBE,
+            COALESCE(SUM(CASE WHEN MOST_PLAYED_ON ='spotify' THEN stream END),0) AS STREAMED_ON_SPOTIFY
+      FROM spotify
+      GROUP BY 1
+      ) as t1
+      WHERE 
+      STREAMED_ON_SPOTIFY > STREAMED_ON_YOUTUBE
+      AND 
+	  STREAMED_ON_YOUTUBE <> 0;
+
+
 
       
 
