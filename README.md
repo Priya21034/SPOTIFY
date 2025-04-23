@@ -152,7 +152,7 @@ SELECT Distinct ALBUM,ARTIST
 
   
   
- -<a href = "https://github.com/Priya21034/SPOTIFY.git"> View Dashboard </a>
+ -<a href = "https://github.com/Priya21034/SPOTIFY/blob/main/README.md"> View Dashboard </a>
  
 
 
