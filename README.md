@@ -156,12 +156,15 @@ SELECT Distinct ALBUM,ARTIST
  
 
 
+![SQL-PNG1](https://github.com/user-attachments/assets/ea37bfe0-e8c6-41d6-992f-2013941761a4)
 
 
       
+![SQL-PNG2](https://github.com/user-attachments/assets/51aff47f-1841-4417-a6a6-73b982c5fbf2)
 
 
 
+![SQL-PNG3](https://github.com/user-attachments/assets/dc2b9cba-4ccf-4eaf-9d0b-2aecb885aae9)
 
 
 
